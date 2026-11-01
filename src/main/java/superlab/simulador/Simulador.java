@@ -1,5 +1,7 @@
 package superlab.simulador;
 
+import superlab.excepciones.EventoCriticoException;
+import superlab.modelo.Incidente;
 import superlab.persistencia.FicheroBinario;
 import superlab.persistencia.FicheroTexto;
 import superlab.persistencia.FicheroXml;
@@ -53,6 +55,45 @@ public class Simulador {
         binario.anadir(new FicheroBinario.Lectura(6,ahora,0.5));
 
         texto.registrar("LAB",0,"Inicio de operacion");
+
+    }
+
+    public void provocar(Incidente incidente)throws IOException, EventoCriticoException {
+        long ahora = System.currentTimeMillis();
+
+        switch (incidente){
+            case FALTA_VENTILACION -> {
+                texto.registrar("CC",4,"Ventilador detenido");
+                texto.registrar("CC",3,"Detector de gas por encima de limite");
+                binario.actualizar(4,ahora,0.0);
+                binario.actualizar(3,ahora,120.0);
+                xml.cambiarEstado("VEN01","APAGADO");
+            }
+            case VEHICULO_SOSPECHOSO -> {
+                texto.registrar("AC",1,"Autocaravana estacionada durante horas, patrulla observando");
+                binario.actualizar(1,ahora,240.0);
+                xml.cambiarEstado("VEH01","VIGILADA");
+            }
+            case FALTA_PROTECCION -> {
+                texto.registrar("AC",2,"Stock de mascarillas agotado, operario sin proteccion");
+                binario.actualizar(2,ahora,0.0);
+                xml.cambiarEstado("EPI01","SIN_PROTECCION");
+            }
+            case OLOR_VECINOS -> {
+                texto.registrar("CC",5,"Vecino denuncia olor extrano");
+                binario.actualizar(5,ahora,85.5);
+                xml.cambiarEstado("OLO01","ALERTA_VECINAL");
+            }
+            case EQUIPO_DESCALIBRADO -> {
+                texto.registrar("LP",6,"Lote rechazado, pureza fuera de especificacion");
+                binario.actualizar(6,ahora,8.0);
+                xml.cambiarEstado("EQU01","DESCALIBRADO");
+            }
+
+            default -> throw new IllegalArgumentException("Incidente no simulable: "+incidente);
+        }
+
+        throw new EventoCriticoException("Situacion critica detectada");
 
     }
 }
