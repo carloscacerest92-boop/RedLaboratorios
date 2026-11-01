@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Consola" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd/MM/yyyy HH:mm:ss.SSS} %-5level %logger{1} - %msg%n"/>
+        </Console>
+
+        <!-- Un fichero de evidencia por ejecución, con fecha y hora en el nombre -->
+        <File name="Evidencia"
+              fileName="logs/evidencias/ejecucion_${date:dd-MM-yyyy_HH-mm-ss}.log"
+              createOnDemand="true">
+            <PatternLayout pattern="%d{dd/MM/yyyy HH:mm:ss.SSS} %-5level %logger{1} - %msg%n"/>
+        </File>
+
+        <!-- Log técnico con rotación por tamaño, compresión .gz y límite de ficheros -->
+        <RollingFile name="Runtime"
+                     fileName="logs/runtime/aplicacion.log"
+                     filePattern="logs/runtime/aplicacion-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{dd/MM/yyyy HH:mm:ss.SSS} %-5level %logger{1} - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Consola"/>
+            <AppenderRef ref="Evidencia"/>
+            <AppenderRef ref="Runtime"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,18 @@
+2026-11-01 23:30:32 | LAB | S0 | Inicio de operacion
+2026-11-01 23:30:32 | LP | S6 | Lote rechazado, pureza fuera de especificacion
+2026-11-01 23:33:48 | LAB | S0 | Inicio de operacion
+2026-11-01 23:33:48 | CC | S5 | Vecino denuncia olor extrano
+2026-11-01 23:34:50 | LAB | S0 | Inicio de operacion
+2026-11-01 23:34:50 | CC | S5 | Vecino denuncia olor extrano
+2026-11-01 23:39:32 | LAB | S0 | Inicio de operacion
+2026-11-01 23:39:32 | AC | S1 | Autocaravana estacionada durante horas, patrulla observando
+2026-11-01 23:39:38 | LAB | S0 | Inicio de operacion
+2026-11-01 23:39:38 | AC | S2 | Stock de mascarillas agotado, operario sin proteccion
+2026-11-01 23:39:41 | LAB | S0 | Inicio de operacion
+2026-11-01 23:39:41 | AC | S2 | Stock de mascarillas agotado, operario sin proteccion
+2026-11-01 23:39:43 | LAB | S0 | Inicio de operacion
+2026-11-01 23:39:43 | AC | S2 | Stock de mascarillas agotado, operario sin proteccion
+2026-11-01 23:39:46 | LAB | S0 | Inicio de operacion
+2026-11-01 23:39:46 | AC | S1 | Autocaravana estacionada durante horas, patrulla observando
+2026-11-01 23:39:48 | LAB | S0 | Inicio de operacion
+2026-11-01 23:39:48 | AC | S1 | Autocaravana estacionada durante horas, patrulla observando

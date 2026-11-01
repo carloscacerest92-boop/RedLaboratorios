@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<laboratorio>
+      
+    <zona id="AC" nombre="Autocaravana">
+            
+        <elemento estado="VIGILADA" id="VEH01" sensor="1" tipo="VEHICULO"/>
+            
+        <elemento estado="CON_PROTECCION" id="EPI01" sensor="2" tipo="PROTECCION"/>
+          
+    </zona>
+      
+    <zona id="CC" nombre="Casa clandestina">
+            
+        <elemento estado="NORMAL" id="GAS01" sensor="3" tipo="DETECTOR_GAS"/>
+            
+        <elemento estado="FUNCIONANDO" id="VEN01" sensor="4" tipo="VENTILADOR"/>
+            
+        <elemento estado="NORMAL" id="OLO01" sensor="5" tipo="OLOR_EXTERIOR"/>
+          
+    </zona>
+      
+    <zona id="LP" nombre="Laboratorio profesional">
+            
+        <elemento estado="CALIBRADO" id="EQU01" sensor="6" tipo="EQUIPO"/>
+          
+    </zona>
+    
+</laboratorio>
