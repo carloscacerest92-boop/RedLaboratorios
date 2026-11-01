@@ -1,0 +1,10 @@
+package superlab.modelo;
+
+public enum Incidente {
+    VEHICULO_SOSPECHOSO,
+    FALTA_PROTECCION,
+    FALTA_VENTILACION,
+    OLOR_VECINOS,
+    EQUIPO_DESCALIBRADO,
+    INDETERMINADO
+}
