@@ -1,0 +1,41 @@
+package superlab.analizador;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import superlab.excepciones.EventoCriticoException;
+import superlab.modelo.Incidente;
+import superlab.simulador.Simulador;
+
+import java.nio.file.Path;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class AnalizadorTest {
+
+    @TempDir
+    Path carpeta;
+
+    @ParameterizedTest
+    @EnumSource(value = Incidente.class, names = "INDETERMINADO", mode = EnumSource.Mode.EXCLUDE)
+    void identificaCadaIncidente(Incidente incidente) throws Exception {
+        Simulador sim = new Simulador(carpeta);
+        sim.iniciar();
+        assertThrows(EventoCriticoException.class, () -> sim.provocar(incidente));
+
+        Analizador analizador = new Analizador(carpeta);
+
+        assertEquals(incidente, analizador.identificar());
+    }
+
+    @Test
+    void sinIncidenteDevuelveIndeterminado()throws Exception{
+        Simulador sim = new Simulador(carpeta);
+        sim.iniciar();
+        Analizador analizador = new Analizador(carpeta);
+
+        assertEquals(Incidente.INDETERMINADO,analizador.identificar());
+    }
+}
