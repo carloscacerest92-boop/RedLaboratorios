@@ -35,7 +35,7 @@ public class SimuladorApp {
     private static Incidente elegirIncidente(String[] args){
         for (String arg : args) {
             if (arg.startsWith("--incidente")){
-                return Incidente.valueOf(arg.substring("--incidente".length()));
+                return Incidente.valueOf(arg.substring("--incidente=".length()));
             }
             
         }
