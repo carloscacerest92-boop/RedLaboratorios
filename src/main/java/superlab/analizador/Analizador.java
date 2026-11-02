@@ -7,6 +7,7 @@ import superlab.persistencia.FicheroAnomalias;
 import superlab.persistencia.FicheroBinario.Lectura;
 import superlab.persistencia.InformeTexto;
 import superlab.persistencia.FicheroBinario;
+import superlab.persistencia.FicheroTexto;
 import superlab.persistencia.FicheroXml;
 
 import java.io.IOException;
@@ -18,10 +19,12 @@ public class Analizador {
     private static final Logger LOG = LogManager.getLogger(Analizador.class);
     private final FicheroBinario binario;
     private final FicheroXml xml;
+    private final FicheroTexto texto;
 
     public Analizador(Path carpetaDatos)throws IOException {
         this.binario = new FicheroBinario(carpetaDatos.resolve("sensores.dat"));
         this.xml = new FicheroXml(carpetaDatos.resolve("estado.xml"));
+        this.texto = new FicheroTexto(carpetaDatos.resolve("historial.txt"));
     }
 
     public Incidente identificar()throws IOException{
@@ -31,25 +34,26 @@ public class Analizador {
         double rpm = binario.leer(4).valor();
         double olor = binario.leer(5).valor();
         double desviacion = binario.leer(6).valor();
+        List<String> historial = ultimaEjecucion();
 
 
-        if (rpm<100 && gas>80&&xml.leerEstado("VEN01").equals("APAGADO")){
+        if (rpm<100 && gas>80&&xml.leerEstado("VEN01").equals("APAGADO") && hayEn(historial, "Ventilador detenido")){
             return Incidente.FALTA_VENTILACION;
         }
 
-        if (olor>70&&rpm>=100&&xml.leerEstado("OLO01").equals("ALERTA_VECINAL")){
+        if (olor>70&&rpm>=100&&xml.leerEstado("OLO01").equals("ALERTA_VECINAL") && hayEn(historial, "Vecino denuncia olor")){
             return Incidente.OLOR_VECINOS;
         }
 
-        if (minutosEstacionada>180&&xml.leerEstado("VEH01").equals("VIGILADA")){
+        if (minutosEstacionada>180&&xml.leerEstado("VEH01").equals("VIGILADA") && hayEn(historial, "Autocaravana estacionada")){
             return Incidente.VEHICULO_SOSPECHOSO;
         }
 
-        if (stockEpi<1&&xml.leerEstado("EPI01").equals("SIN_PROTECCION")){
+        if (stockEpi<1&&xml.leerEstado("EPI01").equals("SIN_PROTECCION") && hayEn(historial, "Stock de mascarillas agotado")){
             return Incidente.FALTA_PROTECCION;
         }
 
-        if (desviacion>5&&xml.leerEstado("EQU01").equals("DESCALIBRADO")){
+        if (desviacion>5&&xml.leerEstado("EQU01").equals("DESCALIBRADO") && hayEn(historial, "Lote rechazado")){
             return Incidente.EQUIPO_DESCALIBRADO;
         }
 
@@ -95,5 +99,22 @@ public class Analizador {
             case EQUIPO_DESCALIBRADO -> List.of("EQU01");
             case INDETERMINADO -> List.of();
         };
+    }
+
+    /** Lineas del historial desde el ultimo "Inicio de operacion" (el historial acumula ejecuciones). */
+    private List<String> ultimaEjecucion() throws IOException {
+        List<String> todas = texto.leerTodas();
+        int inicio = 0;
+        for (int i = 0; i < todas.size(); i++) {
+            if (todas.get(i).contains("Inicio de operacion")) {
+                inicio = i;
+            }
+        }
+        return todas.subList(inicio, todas.size());
+    }
+
+    private boolean hayEn(List<String> lineas, String sintoma) {
+        String buscado = sintoma.toLowerCase();
+        return lineas.stream().anyMatch(l -> l.toLowerCase().contains(buscado));
     }
 }
