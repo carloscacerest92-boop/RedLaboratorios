@@ -46,7 +46,7 @@ Si los datos no encajan con ninguno, el analizador devuelve `INDETERMINADO`. La 
 
 **Cómo se relacionan:** el **ID de sensor** une el registro binario (`idSensor`), el atributo `sensor` de cada elemento del XML y la columna `S<n>` del historial de texto. La zona (`AC`, `CC`, `LP`) aparece en el TXT y en el XML, y el `timestamp` del binario sirve para ordenar las lecturas.
 
-**Cómo decide el analizador:** abre `sensores.dat` y `estado.xml` (solo recibe la carpeta con los ficheros, sin conocer al simulador) y aplica condiciones conocidas que combinan un valor anómalo del binario con el estado del elemento en el XML. Los textos de efectos y conclusión de cada incidente viven en el `enum Incidente`.
+**Cómo decide el analizador:** abre `sensores.dat`, `estado.xml` y `historial.txt` (solo recibe la carpeta con los ficheros, sin conocer al simulador) y aplica condiciones conocidas que exigen las **tres fuentes a la vez**: un valor anómalo en el binario, el estado del elemento en el XML y el síntoma descrito en el historial (solo se leen las líneas posteriores al último `Inicio de operacion`, porque el historial acumula ejecuciones). Los textos de efectos y conclusión de cada incidente viven en el `enum Incidente`.
 
 ## Requisitos y dependencias
 
