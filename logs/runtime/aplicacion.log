@@ -1,5 +1,10 @@
-01/11/2026 23:39:43.622 ERROR SimuladorApp - Evento critico capturado: Situacion critica detectada
-01/11/2026 23:39:46.199 INFO  SimuladorApp - Simulacion iniciada
-01/11/2026 23:39:46.247 ERROR SimuladorApp - Evento critico capturado: Situacion critica detectada
-01/11/2026 23:39:48.939 INFO  SimuladorApp - Simulacion iniciada
-01/11/2026 23:39:48.985 ERROR SimuladorApp - Evento critico capturado: Situacion critica detectada
+02/11/2026 18:56:53.448 ERROR SimuladorApp - Evento critico capturado: Situacion critica detectada
+02/11/2026 18:56:57.392 INFO  SimuladorApp - Simulacion iniciada
+02/11/2026 18:56:57.430 ERROR SimuladorApp - Evento critico capturado: Situacion critica detectada
+02/11/2026 18:57:44.256 INFO  SimuladorApp - Simulacion iniciada
+02/11/2026 18:57:44.294 ERROR SimuladorApp - Evento critico capturado: Situacion critica detectada
+02/11/2026 18:58:03.490 INFO  AnalizadorApp - Analizador iniciado sobre datos
+02/11/2026 18:58:03.495 INFO  Analizador - 6 registros binarios procesados
+02/11/2026 18:58:03.502 INFO  Analizador - Incidente identificado: FALTA_VENTILACION
+02/11/2026 18:58:03.544 INFO  Analizador - Salidas generadas en salida
+02/11/2026 18:58:03.544 INFO  AnalizadorApp - Analisis completado: FALTA_VENTILACION

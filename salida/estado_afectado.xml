@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<afectados>
+    <zona id="CC" nombre="Casa clandestina">
+        <elemento estado="NORMAL" id="GAS01" sensor="3" tipo="DETECTOR_GAS"/>
+        <elemento estado="APAGADO" id="VEN01" sensor="4" tipo="VENTILADOR"/>
+    </zona>
+</afectados>

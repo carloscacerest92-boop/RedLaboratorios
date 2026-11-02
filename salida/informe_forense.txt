@@ -1,0 +1,5 @@
+INFORME FORENSE
+Incidente identificado: FALTA_VENTILACION
+Efectos detectados: Ventilador VEN01 apagado y concentracion de gas por encima del limite
+Lecturas anomalas utilizadas: 2
+Conclusion: La casa clandestina acumula gas sin ventilacion y existe riesgo para quienes estan dentro.

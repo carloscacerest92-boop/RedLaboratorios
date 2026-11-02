@@ -1,0 +1,5 @@
+02/11/2026 18:58:03.490 INFO  AnalizadorApp - Analizador iniciado sobre datos
+02/11/2026 18:58:03.495 INFO  Analizador - 6 registros binarios procesados
+02/11/2026 18:58:03.502 INFO  Analizador - Incidente identificado: FALTA_VENTILACION
+02/11/2026 18:58:03.544 INFO  Analizador - Salidas generadas en salida
+02/11/2026 18:58:03.544 INFO  AnalizadorApp - Analisis completado: FALTA_VENTILACION

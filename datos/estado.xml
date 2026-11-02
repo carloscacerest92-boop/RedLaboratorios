@@ -3,7 +3,7 @@
       
     <zona id="AC" nombre="Autocaravana">
             
-        <elemento estado="VIGILADA" id="VEH01" sensor="1" tipo="VEHICULO"/>
+        <elemento estado="NORMAL" id="VEH01" sensor="1" tipo="VEHICULO"/>
             
         <elemento estado="CON_PROTECCION" id="EPI01" sensor="2" tipo="PROTECCION"/>
           
@@ -13,7 +13,7 @@
             
         <elemento estado="NORMAL" id="GAS01" sensor="3" tipo="DETECTOR_GAS"/>
             
-        <elemento estado="FUNCIONANDO" id="VEN01" sensor="4" tipo="VENTILADOR"/>
+        <elemento estado="APAGADO" id="VEN01" sensor="4" tipo="VENTILADOR"/>
             
         <elemento estado="NORMAL" id="OLO01" sensor="5" tipo="OLOR_EXTERIOR"/>
           
